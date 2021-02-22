@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-body border-bottom shadow-sm">
+            <p class="h5 my-0 me-md-auto fw-normal">User Base</p>
+            <nav class="my-2 my-md-0 me-md-3">
+                <a class="p-2 text-dark" href="/">Block</a>
+                <a class="p-2 text-dark" href="/users-main">Unblock</a>
+                <a class="p-2 text-dark" href="#">Delete</a>
+            </nav>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+        </div>
+
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <td>Highlight </td>
+                    <td>ID</td>
+                    <td>Mail</td>
+                    <td>Name</td>
+                    <td>Registration Data</td>
+                    <td>Last Login</td>
+                    <td>Status</td>
+                </tr>
+            <!-- On rows -->
+            <tbody>
+                    <div th:each="el : ${users}" >
+                        <tr>
+                            <td><div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                                <label class="custom-control-label" for="customCheck1"></label></div></td>
+                            <td>[[${el.id}]]</td>
+                            <td>[[${el.mail}]]</td>
+                            <td>[[${el.name}]]</td>
+                            <td>[[${el.regDate}]]</td>
+                            <td>[[${el.lastLog}]]</td>
+                            <td>[[${el.status}]]</td>
+                        </tr>
+                    </div>
+                </div>
+            </tbody>
+        </table>
+
+</body>
+</html>
